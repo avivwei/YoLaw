@@ -1,14 +1,19 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import Link  from 'react-router-dom';
+import {ClientTable} from '../App/ClientsTable'
 
 
 const url='http://yolaw.herokuapp.com/api/';
+// let token = '0d164264fda6423ab0d3a276bb5666b07a4241d1';
 
 export class Api extends React.Component {
     constructor(props) {
         super(props);
-        this.getDataFromApi = this.getDataFromApi.bind(this);
+        this.state = {clients: new Array};
+        this.getUserDataFromApi = this.getUserDataFromApi.bind(this);
         this.getClientsApi = this.getClientsApi.bind(this);
+        this.renderDataFromApi=this.renderDataFromApi.bind(this);
     }
     getUrl(data) {
         let url;
@@ -24,23 +29,52 @@ export class Api extends React.Component {
         return url;
         
     }
-    getClientsApi(token) {
-        axios.get(url + 'lawyers/clients/get', {Headers: {Authorization: token}})
+    addClientApi(data) {
+        axios.post(url + 'lawyers/clients/add', data)
             .then(function (response){
                 console.log(response);
             })
             .catch(function (error) {
+                consoel.log(error);
+            })
+    }
+    renderDataFromApi(){
+        if (!localStorage.getItem('token')) {
+            return <button type="submit" value="Submit" onClick={this.getUserDataFromApi} >
+                  Submit
+            </button>
+        }
+        console.log('ffff')
+        
+        
+    }
+    
+    getClientsApi(token) {
+        
+        let data;
+        axios.get(url + 'lawyers/clients/get', {headers:  {'Content-Type': 'application/json',
+                Authorization:  token?`Bearer ${token}`: ''}})
+            .then(response => {
+                    data = response.data.result;
+                    this.setState({clients: data});
+                }
+            )
+            .catch(function (error) {
                 console.log(error);
             })
     }
+    
+    
     getUserDataFromApi() {
         let data = this.props.data;
-        console.log(data)
+        console.log(data);
         let urlEnding = this.getUrl(data);
         axios.post(url + urlEnding, data)
-            .then(function (response) {
-                    this.setState({token: response.data.result.token});
-                    this.getClientsApi(this.state.token);
+            .then(response => {
+                localStorage.setItem('token', response.data.result.token);
+                const token = localStorage.getItem('token');
+                console.log(token);
+                this.getClientsApi(response.data.result.token);
             })
             .catch(function (error) {
                 console.log(error);
@@ -48,11 +82,16 @@ export class Api extends React.Component {
         
     }
     render() {
+        
+        // const element = this.renderDataFromApi();
         return (
-            <button type="submit" value="Submit" onClick={this.getUserDataFromApi} > Submit
-            </button>
-            
+            <div>
+                {this.renderDataFromApi()}
+                
+            </div>
         )
     }
 }
 export default Api
+
+

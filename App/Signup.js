@@ -45,13 +45,17 @@ class Signup extends Component {
             <div>
                 <h2> Please sign up </h2>
                 <label> Email address </label>
-                <input type="email" name="email"  placeholder="Email address"  required onChange={this.updateState} autoFocus />
+                <input type="email" name="email"  placeholder="Email address" style={{display: 'block'}}  required onChange={this.updateState} autoFocus />
                 <label> Password</label>
-                <input  placeholder="Password"  name="password" required type="password"  onChange = {this.updateState} />
-                <input  placeholder="First Name"   required name="first"  onChange = {this.updateState} />
-                <input  placeholder="Last Name"  required name="last"  onChange = {this.updateState} />
-                <li><Link to={'/'}>login</Link></li>
+                <input  placeholder="Password"  name="password" required type="password" style={{display: 'block'}}  onChange = {this.updateState} />
+                <label> First Name </label>
+                <input  placeholder="First Name"   required name="first" style={{display: 'block'}}   onChange = {this.updateState} />
+                <label> Last Name</label>
+                <input  placeholder="Last Name"  required name="last" style={{display: 'block'}}  onChange = {this.updateState} />
                 <Api data = {this.state} />
+    
+                <Link type="submit"  to={'/'} >login</Link>
+                {/*<Api data = {this.state} />*/}
             </div>
         )
     }
