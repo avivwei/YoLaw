@@ -9,7 +9,7 @@ class Login extends Component {
         this.state = {
             email: '',
             password: ''
-        }
+        };
         this.updateState = this.updateState.bind(this);
     }
     updateState (e) {
@@ -23,22 +23,25 @@ class Login extends Component {
             default:
                 console.log('state does not update');
         }
-        console.log(this.state);
     }
     render() {
         return (
             <div>
+            <form>
+                <div>
                 <h2>Login</h2>
-                    <label> Email address </label>
-                    <input type="email" name="email"  placeholder="Email address"  required onChange={this.updateState} autoFocus />
-                    <label> Password</label>
-                    <input  placeholder="Password"  name="password" required type="password"  onChange = {this.updateState} />
-                    <ul>
-                        <li><Link to={'/Signup'}>Sign Up</Link></li>
-                        <li><Link to={'/forgot'}>Forgot Password?</Link></li>
-                    </ul>
-                    <Api data = {this.state} />
+                    <label style={{display: 'block'}} > Email address </label>
+                    <input style={{display: 'block'}} type="email" name="email"  placeholder="Email address"  required onChange={this.updateState} autoFocus />
+                    <label style={{display: 'block'}} > Password</label>
+                    <input style={{display: 'block'}}  placeholder="Password"  name="password" required type="password"  onChange = {this.updateState} />
+                </div>
+            </form>
+            <div>
+                <Api data = {this.state} />
+                <Link style={{display: 'block'}}  to={'/Signup'}>Sign Up</Link>
+                <Link to={'/forgot'}>Forgot Password?</Link>
             </div>
+        </div>
         );
     }
 }
