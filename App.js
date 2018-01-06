@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Signup from './App/Signup';
 import Login from './app/Login';
 import Forgot from './App/Forgot';
 import ClientsTable from './App/ClientsTable';
 
 class App extends Component {
+    constructor(){
+        super();
+        this.state = {
+            data: '',
+            loading: true
+        };
+    }
     render() {
         return (
             <Router>
@@ -17,8 +24,9 @@ class App extends Component {
                         <Route exact path='/forgot' component={Forgot} />
                         <Route exact path='/signup' component={Signup} />
                         <Route exact path='/' component={Login} />
-                        <Route exact path="/lawyers/clients/get" component={ClientsTable} />
+                        <Route exact path="/lawyers/clients" component={ClientsTable} />
                     </Switch>
+                    
                 </div>
             </Router>
         );

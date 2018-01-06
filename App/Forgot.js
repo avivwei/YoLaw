@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Api from '../components/apiComponent';
+import Api from '../components/ApiComponent';
 import {Link} from 'react-router-dom';
 
 export default class Forgot extends Component {
