@@ -6,16 +6,19 @@ import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        
         this.state = {
             email: '',
             password: '',
             clicked: false
         };
+        
         this.updateState = this.updateState.bind(this);
-        this.getData =this.getData.bind(this);
+        this.clicked = this.clicked.bind(this);
         // this.login = this.login.bind(this);
     }
+    
     updateState (e) {
         switch (e.target.name) {
             case 'email':
@@ -28,6 +31,7 @@ class Login extends Component {
                 console.log('state does not update');
         }
     }
+    
     // login() {
     //     let url="http://yolaw.herokuapp.com/api/users/signin";
     //     let data = this.state;
@@ -46,21 +50,16 @@ class Login extends Component {
     //             console.log(error);
     //         });
     // }
-    getData() {
+    
+    clicked() {
         this.setState({clicked: true});
     }
     
     render() {
-         const isClicked = ()=>
-        {
         
-        if (this.state.clicked) {
-            return <Api email={this.state.email} password={this.state.password} />
-        }
-    
-    }
+                                                            
         return (
-            
+                                                            
             <div>
                 <div>
                 <h2>Login</h2>
@@ -68,8 +67,8 @@ class Login extends Component {
                     <input style={{display: 'block'}} type="email" name="email"  placeholder="Email address"  required onChange={this.updateState} autoFocus />
                     <label style={{display: 'block'}} > Password</label>
                     <input style={{display: 'block'}}  placeholder="Password"  name="password" required type="password"  onChange = {this.updateState} />
-                    <button className="submit" value="Submit" onClick={this.getData}  >Submit</button>
-                    {isClicked()}
+                    <button className="submit" value="Submit" onClick={this.clicked}  >Submit</button>
+                    {this.state.clicked?<Api email={this.state.email} password={this.state.password} />:''}
 
                 </div>
                 <div>

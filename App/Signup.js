@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Api} from '../components/ApiComponent'
 import {Link} from 'react-router-dom';
+import CheckBox from'rc-checkbox';
 
 class Signup extends Component {
     constructor(props){
@@ -10,9 +11,13 @@ class Signup extends Component {
                 password: '',
                 isLawyer: false,
                 name: {first: '', last: ''},
-                company: ''
+                company: '',
+                clicked: false
+                
         };
         this.updateState = this.updateState.bind(this);
+        this.clicked = this.clicked.bind(this);
+        this.isLawyer=this.isLawyer.bind(this);
     }
     componentDidMount() {
         console.log('state from component did mount:   ', this.sate);
@@ -30,15 +35,27 @@ class Signup extends Component {
                 let name = {first: e.target.value, last: this.state.name.last};
                 this.setState(
                     {name: name});
+                    console.log(name);
                 break;
             case 'last':
                 let name2 = {first: this.state.name.first , last: e.target.value};
                 this.setState(
                     {name: name2});
+                console.log(name2);
                 break;
             default:
                 console.log('bahhhhh');
         }
+        
+    }
+    isLawyer(e) {
+        this.setState({isLawyer: !this.state.isLawyer});
+        e.target.checked= !this.state.isLawyer;
+        console.log('is lawyer? ' + this.state.isLawyer);
+    }
+    clicked () {
+        console.log(this.state.name);
+        this.setState({clicked: true});
     }
     render() {
         return (
@@ -52,10 +69,12 @@ class Signup extends Component {
                 <input  placeholder="First Name"   required name="first" style={{display: 'block'}}   onChange = {this.updateState} />
                 <label> Last Name</label>
                 <input  placeholder="Last Name"  required name="last" style={{display: 'block'}}  onChange = {this.updateState} />
-                <Api data = {this.state} />
+                <label style={{fontSize: '10px'}}><CheckBox  value="Lawyer" type="checkbox" name="lawyer" checked={!this.state.isLawyer} onClick={this.isLawyer} />I'm a lawyer</label>
+                 <CheckBox value="Client" type="checkbox" id="client" name="client" defaultCheck={false} checked={this.state.isLawyer} onClick={this.isLawyer}/><label style={{fontSize: '10px'}}>I'm a client</label>
+                <button className="submit" value="Submit" onClick={this.clicked} style={{display: 'block'}}  >Submit</button>
+                {this.state.clicked?<Api email={this.state.email} password={this.state.password} name={this.state.name} isLawyer={this.state.isLawyer} />:''}
     
                 <Link type="submit"  to={'/'} >login</Link>
-                {/*<Api data = {this.state} />*/}
             </div>
         )
     }
