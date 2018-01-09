@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {Api} from '../components/ApiComponent';
-import {Link} from 'react-router-dom'
-import axios from 'axios';
+import {Link, Router} from 'react-router-dom'
+import {withRouter} from 'react-router'
+import {axios} from 'axios';
+import ApiCalls from '../apiCalls.js'
 
-class Login extends Component {
+class LoginPage extends Component {
     constructor(props) {
         super(props);
         
@@ -32,29 +33,18 @@ class Login extends Component {
         }
     }
     
-    // login() {
-    //     let url="http://yolaw.herokuapp.com/api/users/signin";
-    //     let data = this.state;
-    //     axios.post(url, data)
-    //         .then(response => {
-    //             console.log(response);
-    //             if (response.data.result.token) {
-    //                 localStorage.setItem('token', response.data.result.token);
-    //                 this.props.history.push('/lawyers/clients')
-    //             }
-    //             else {
-    //                 alert('invalid email/password');
-    //             }
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-    // }
-    
     clicked() {
-        this.setState({clicked: true});
-    }
     
+        ApiCalls.login(this.state.email, this.state.password,
+            (token)=>{
+                this.props.history.push("/lawyers/clients")
+            },
+            (error) => {
+                console.log('wrong password')
+            })
+    
+    
+    }
     render() {
         
                                                             
@@ -68,7 +58,7 @@ class Login extends Component {
                     <label style={{display: 'block'}} > Password</label>
                     <input style={{display: 'block'}}  placeholder="Password"  name="password" required type="password"  onChange = {this.updateState} />
                     <button className="submit" value="Submit" onClick={this.clicked}  >Submit</button>
-                    {this.state.clicked?<Api email={this.state.email} password={this.state.password} />:''}
+                    {this.state.clicked?<Api email={this.state.email} password={this.state.password} />:null}
 
                 </div>
                 <div>
@@ -79,4 +69,4 @@ class Login extends Component {
         );
     }
 }
-export default Login;
+export default withRouter(LoginPage);
