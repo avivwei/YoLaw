@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Api} from '../components/ApiComponent'
 import {Link} from 'react-router-dom';
 import CheckBox from'rc-checkbox';
 
@@ -72,9 +71,9 @@ class Signup extends Component {
                 <label style={{fontSize: '10px'}}><CheckBox  value="Lawyer" type="checkbox" name="lawyer" checked={!this.state.isLawyer} onClick={this.isLawyer} />I'm a lawyer</label>
                  <CheckBox value="Client" type="checkbox" id="client" name="client" defaultCheck={false} checked={this.state.isLawyer} onClick={this.isLawyer}/><label style={{fontSize: '10px'}}>I'm a client</label>
                 <button className="submit" value="Submit" onClick={this.clicked} style={{display: 'block'}}  >Submit</button>
-                {this.state.clicked?<Api email={this.state.email} password={this.state.password} name={this.state.name} isLawyer={this.state.isLawyer} />:''}
+                {/*{this.state.clicked?<Api email={this.state.email} password={this.state.password} name={this.state.name} isLawyer={this.state.isLawyer} />:''}*/}
     
-                <Link type="submit"  to={'/'} >login</Link>
+                <Link type="submit"  to={'/login'} >login</Link>
             </div>
         )
     }

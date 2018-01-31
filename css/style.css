@@ -1,14 +1,142 @@
-.example-enter {
-    opacity: 0.01;
+.dotted {
+    border:0;
+    border-bottom: 1px dotted;
 }
-.example-enter.example-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
+
+
+table.clients tr:hover {
+    background: aqua;
+    cursor: pointer;
 }
-.example-leave {
-    opacity: 1;
+.select-theme-1 {
+    --styled-select__background-color: black;
+    --styled-select__border-width: 3px;
+    --styled-select-control__border-color: red;
 }
-.example-leaveave.example-leave-active {
-    opacity: 0.01;
-    transition: opacity 500ms ease-in;
+.caPubw {
+    width: 10%;
 }
+.efmkxC {
+    width: 10%;
+}
+
+label {
+    float: left;
+}
+.submit {
+    float: left;
+}
+ #workflow {
+      cursor:pointer
+ }
+ .iconCol {
+     cursor: pointer;
+ }
+
+ .myDoc {
+
+     /*display:inline-block;*/
+     height: 100px; text-align:center; line-height:20px;
+ }
+
+ #pageTitle {
+     height: 20px;
+     border-size:2px;
+     border-style:solid;
+     border-color:black;
+
+ }
+div {
+    display:block;
+}
+
+textarea {
+     width: 300px;
+     height:200px;
+     display:inline-block;
+     text-align: left;
+     /*display:block;*/
+ }
+
+
+ /*.versionTable {*/
+     /*display: inline;*/
+     /*left: 50%;*/
+
+
+ /*}*/
+ /*td {*/
+     /*width: 200px;*/
+ /*}*/
+
+/*.iconCol {*/
+    /*width: 10px;*/
+/*}*/
+
+ /*#docName {*/
+     /*display:inline-block;*/
+     /*height: 10px*/
+ /*}*/
+ /*#textName {*/
+     /*display: inline-block;*/
+     /*width: 100px;*/
+     /*border: 1px solid black;*/
+     /*text-align: center;*/
+     /*position: fixed;*/
+     /*top: 30%;*/
+     /*left: 46%;*/
+
+ /*}*/
+ /*strong {*/
+     /*top: 70%;*/
+ /*}*/
+/*.versionTable {*/
+    /*display:inline-block;*/
+    /*text-align:center;*/
+    /**/
+
+/*}*/
+td {padding:10px 25px 10px 25px;}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #BDBDBD;
+    height: 20px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.fileBtn {
+    cursor: pointer;
+
+}
+/*.fileUpload input.upload {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*font-size: 20px;*/
+    /*cursor: pointer;*/
+    /*opacity: 0;*/
+    /*filter: alpha(opacity=0);*/
+    /*height: 50%;*/
+    /*text-align: center;*/
+/*}*/
+
+/*.uploadFile {*/
+    /**/
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    /*margin: 10px;*/
+    /*background-color: #BDBDBD;*/
+    /*height: 20px;*/
+    /*width: 100px;*/
+    /*text-align: center;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.custom-span{ font-family: Arial; font-weight: bold;font-size: 40px;}*/
+/*#uploadFile{border: none;margin-left: 100px; width: 200px;}*/
+/*.custom-para{font-family: arial;font-weight: bold;font-size: 24px; color:#585858;}*/

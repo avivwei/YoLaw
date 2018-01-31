@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Api from '../components/ApiComponent';
 import {Link} from 'react-router-dom';
 
 export default class Forgot extends Component {
@@ -15,7 +14,6 @@ export default class Forgot extends Component {
         return (
             <div>
                 <input type="email" name="email"  placeholder="Email address"  required onChange={this.updateState} />
-                <Api data={this.state} />
                 <Link style={{display: 'block'}}  to={"/"} >Login</Link>
                 <Link to={"/singUp"}>Sign Up</Link>
             </div>
